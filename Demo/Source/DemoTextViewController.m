@@ -9,6 +9,10 @@
 #import "DemoTextViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "NSMutableAttributedString+HTML.h"
+#import "NSAttributedString+HTML.h"
+#import "NSAttributedString+SmallCaps.h"
+#import "NSAttributedString+DTCoreText.h"
 
 @interface DemoTextViewController ()
 - (void)_segmentedControlChanged:(id)sender;
