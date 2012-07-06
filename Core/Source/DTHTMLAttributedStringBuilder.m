@@ -8,6 +8,11 @@
 
 #import "DTCoreText.h"
 #import "DTHTMLAttributedStringBuilder.h"
+#import "NSMutableString+HTML.h"
+#import "NSString+HTML.h"
+#import "NSString+Paragraphs.h"
+#import "NSMutableAttributedString+HTML.h"
+#import "NSAttributedString+DTCoreText.h"
 
 @interface DTHTMLAttributedStringBuilder ()
 

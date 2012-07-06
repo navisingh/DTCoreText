@@ -8,6 +8,7 @@
 
 #import "DTCoreText.h"
 #import "DTCoreTextLayoutFrame.h"
+#import "NSAttributedString+DTCoreText.h"
 
 // global flag that shows debug frames
 static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;

@@ -8,6 +8,7 @@
 
 #import "DTCoreText.h"
 #import "NSAttributedString+DTCoreText.h"
+#import "NSString+HTML.h"
 
 @implementation NSAttributedString (DTCoreText)
 

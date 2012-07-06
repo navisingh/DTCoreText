@@ -8,6 +8,7 @@
 
 #import "DTAttributedTextView.h"
 #import "DTCoreText.h"
+#import "NSAttributedString+DTCoreText.h"
 
 @interface DTAttributedTextView ()
 
