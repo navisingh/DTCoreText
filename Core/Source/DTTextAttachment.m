@@ -85,7 +85,7 @@
 		if (range.length)
 		{
 			NSString *encodedData = [src substringFromIndex:range.location + range.length];
-			NSData *decodedData = [NSData dataFromBase64String:encodedData];
+			NSData *decodedData = [NSData dataFromABase64String:encodedData];
 			
 			decodedImage = [[DTImage alloc] initWithData:decodedData];
 			
@@ -196,7 +196,7 @@
 	
 	DTImage *image = (DTImage *)contents;
 	NSData *data = [image dataForPNGRepresentation];
-	NSString *encoded = [data base64EncodedString];
+	NSString *encoded = [data base64EncodedStringFromData];
 	
 	return [@"data:image/png;base64," stringByAppendingString:encoded];
 }

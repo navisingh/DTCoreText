@@ -50,6 +50,8 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
+	NSAssert([newSuperview isKindOfClass:[UITableView class]], @"the super view is a tableview.");
+	
 	UITableView *tableView = (UITableView *)newSuperview;
 	
 	if (tableView.style == UITableViewStyleGrouped)
@@ -63,9 +65,10 @@
 
 - (CGFloat)requiredRowHeightInTableView:(UITableView *)tableView
 {
-	
-	CGFloat contentWidth = tableView.frame.size.width;
+	NSAssert([tableView isKindOfClass:[UITableView class]], @"the super view is a tableview.");
 
+	CGFloat contentWidth = tableView.frame.size.width;
+	
 	// reduce width for accessories
 	switch (self.accessoryType) 
 	{
@@ -85,7 +88,7 @@
 	{
 		contentWidth -= 19;
 	}
-	
+
 	CGSize neededSize = [_attributedTextContextView suggestedFrameSizeToFitEntireStringConstraintedToWidth:contentWidth];
 	
 	// note: non-integer row heights caused trouble < iOS 5.0

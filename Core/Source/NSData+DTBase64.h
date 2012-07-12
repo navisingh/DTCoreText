@@ -43,13 +43,13 @@ char *NewDTBase64Encode(
  @param aString The base 64 string.
  @returns An NSData representation of a string that was Base64 encoded. 
  */
-+ (NSData *)dataFromBase64String:(NSString *)aString;
++ (NSData *)dataFromABase64String:(NSString *)aString;
 
 
 /** 
  Retrive an NSString in Base64 encoding from an NSData object. 
  @returns An NSString representation of this NSData instance, encoded in Base64. 
  */
-- (NSString *)base64EncodedString;
+- (NSString *)base64EncodedStringFromData;
 
 @end
