@@ -8,11 +8,6 @@
 
 #import "DTCoreText.h"
 #import "DTHTMLElement.h"
-#import "NSCharacterSet+HTML.h"
-#import "NSString+CSS.h"
-#import "NSString+HTML.h"
-#import "NSAttributedString+HTML.h"
-#import "NSAttributedString+SmallCaps.h"
 
 @interface DTHTMLElement ()
 

@@ -13,7 +13,6 @@
 #endif
 
 #import "DTCoreText.h"
-#import "DTHTMLAttributedStringBuilder.h"
 
 @implementation NSAttributedString (HTML)
 

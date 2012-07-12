@@ -9,7 +9,6 @@
 #import "DTCoreText.h"
 #import "NSScanner+HTML.h"
 #import "NSCharacterSet+HTML.h"
-#import "NSString+HTML.h"
 
 @implementation NSScanner (HTML)
 

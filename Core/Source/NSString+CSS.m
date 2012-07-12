@@ -8,7 +8,6 @@
 
 #import "DTCoreText.h"
 #import "NSString+CSS.h"
-#import "NSScanner+HTML.h"
 
 @implementation NSString (CSS)
 
