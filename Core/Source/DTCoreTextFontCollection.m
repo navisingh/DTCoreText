@@ -99,8 +99,7 @@ static DTCoreTextFontCollection *_availableFontsCollection = nil;
 	{
 		// try caches
 		
-		NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-		cachesPath = [cachesPath stringByAppendingPathComponent:@"FontDescriptors.cache"];
+		NSString *cachesPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"FontDescriptors.cache"];
 		
 		self.fontDescriptors = nil;//[NSKeyedUnarchiver unarchiveObjectWithFile:cachesPath];
 		
