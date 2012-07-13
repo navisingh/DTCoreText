@@ -50,7 +50,10 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
-	NSAssert([newSuperview isKindOfClass:[UITableView class]], @"the super view is a tableview.");
+	if (newSuperview) {
+		NSLog(@"%@", NSStringFromClass([newSuperview class]) );
+		NSAssert([newSuperview isKindOfClass:[UITableView class]], @"the tableView is indeed a tableview.");
+	}
 	
 	UITableView *tableView = (UITableView *)newSuperview;
 	
@@ -65,7 +68,10 @@
 
 - (CGFloat)requiredRowHeightInTableView:(UITableView *)tableView
 {
-	NSAssert([tableView isKindOfClass:[UITableView class]], @"the super view is a tableview.");
+	if (tableView) {
+		NSLog(@"%@", NSStringFromClass([tableView class]) );
+		NSAssert([tableView isKindOfClass:[UITableView class]], @"the tableView is indeed a tableview.");
+	}
 
 	CGFloat contentWidth = tableView.frame.size.width;
 	
