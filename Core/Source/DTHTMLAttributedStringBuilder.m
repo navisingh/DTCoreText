@@ -346,6 +346,7 @@
 		currentTag.tagContentInvisible = YES;
 		
 		// make appropriate attachment
+//		NSLog(@"Options: %@", _options);
 		DTTextAttachment *attachment = [DTTextAttachment textAttachmentWithElement:currentTag options:_options];
 		
 		// add it to tag

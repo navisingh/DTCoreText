@@ -63,6 +63,14 @@
 		maxImageSize = [maxImageSizeValue CGSizeValue];
 	}
 	
+	CGSize maxObjectSize = CGSizeZero;
+	
+	NSValue *maxObjectSizeValue =[options objectForKey:DTMaxObjectSize];
+	if (maxObjectSizeValue)
+	{
+		maxObjectSize = [maxObjectSizeValue CGSizeValue];
+	}
+	
 	// width, height from tag
 	CGSize displaySize = element.size; // width/height from attributes or CSS style
 	CGSize originalSize = element.size;
@@ -161,17 +169,34 @@
 	// adjust the display size if there is a restriction and it's too large
 	CGSize adjustedSize = displaySize;
 	
-	if (maxImageSize.width>0 && maxImageSize.height>0)
-	{
-		if (maxImageSize.width < displaySize.width || maxImageSize.height < displaySize.height)
+	if (attachmentType == DTTextAttachmentTypeObject) { //Navi - added this for objects.
+		if (maxObjectSize.width>0 && maxObjectSize.height>0)
 		{
-			adjustedSize = sizeThatFitsKeepingAspectRatio2(displaySize, maxImageSize);
+			if (maxObjectSize.width < displaySize.width || maxObjectSize.height < displaySize.height)
+			{
+				adjustedSize = sizeThatFitsKeepingAspectRatio2(displaySize, maxObjectSize);
+			}
+			
+			// still no display size? use max size
+			if (CGSizeEqualToSize(displaySize, CGSizeZero))
+			{
+				adjustedSize = maxObjectSize;
+			}
 		}
-		
-		// still no display size? use max size
-		if (CGSizeEqualToSize(displaySize, CGSizeZero))
+	}
+	else {
+		if (maxImageSize.width>0 && maxImageSize.height>0)
 		{
-			adjustedSize = maxImageSize;
+			if (maxImageSize.width < displaySize.width || maxImageSize.height < displaySize.height)
+			{
+				adjustedSize = sizeThatFitsKeepingAspectRatio2(displaySize, maxImageSize);
+			}
+			
+			// still no display size? use max size
+			if (CGSizeEqualToSize(displaySize, CGSizeZero))
+			{
+				adjustedSize = maxImageSize;
+			}
 		}
 	}
 		

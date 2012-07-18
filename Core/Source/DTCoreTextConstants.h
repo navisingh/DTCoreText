@@ -15,6 +15,7 @@ extern NSString * const NSAttachmentAttributeName;
 // custom options
 
 extern NSString * const DTMaxImageSize;
+extern NSString * const DTMaxObjectSize;
 extern NSString * const DTDefaultFontFamily;
 extern NSString * const DTDefaultTextColor;
 extern NSString * const DTDefaultLinkColor;
