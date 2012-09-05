@@ -288,6 +288,7 @@ static Class _layerClassToUseForDTAttributedTextContentView = nil;
 								if (_delegateFlags.delegateSupportsCustomViewsForAttachments)
 								{
 									newCustomAttachmentView = [_delegate attributedTextContentView:self viewForAttachment:attachment frame:frameForSubview];
+									newCustomAttachmentView.frame = frameForSubview; //This is essential if you want the view to show up always.
 								}
 								else if (_delegateFlags.delegateSupportsGenericCustomViews)
 								{
