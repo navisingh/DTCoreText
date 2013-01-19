@@ -145,6 +145,15 @@
 	{
 		defaultFontDescriptor.fontFamily = @"Times New Roman";
 	}
+	NSString *defaultFontName = [_options objectForKey:DTDefaultFontName];
+	if (defaultFontName) {
+		defaultFontDescriptor.fontName = defaultFontName;
+	}
+	NSNumber *defaultFontSize = [_options objectForKey:DTDefaultFontSize];
+	if (defaultFontSize) {
+		defaultFontDescriptor.pointSize = [defaultFontSize floatValue] * textScale;
+	}
+	
 	
 	defaultLinkColor = [_options objectForKey:DTDefaultLinkColor];
 	
