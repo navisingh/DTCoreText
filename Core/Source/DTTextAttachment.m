@@ -77,6 +77,7 @@
 	
 	// get base URL
 	NSURL *baseURL = [options objectForKey:NSBaseURLDocumentOption];
+	NSString *rootPath = [options objectForKey:DTRootPath];
 	
 	// decode URL
 	NSString *src = [element attributeForKey:@"src"];
@@ -110,19 +111,33 @@
 		if (![contentURL scheme])
 		{
 			// possibly a relative url
-			if (baseURL)
-			{
-				contentURL = [NSURL URLWithString:src relativeToURL:baseURL];
-			}
-			else
-			{
+			do {
+				if (baseURL)
+				{
+					contentURL = [NSURL URLWithString:src relativeToURL:baseURL];
+					
+					if ([contentURL isFileURL])
+						if([[NSFileManager defaultManager] fileExistsAtPath:[contentURL path]])
+							break;
+				}
+				if(rootPath)
+				{
+					NSString *imageFile = [rootPath stringByAppendingPathComponent:src];
+					if([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
+						imageFile = [@"file://" stringByAppendingString:imageFile];
+						imageFile = [imageFile stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+						imageFile = [imageFile stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+						contentURL = [NSURL URLWithString:imageFile];
+						break;
+					}
+				}
 				// file in app bundle
 				NSString *path = [[NSBundle mainBundle] pathForResource:src ofType:nil];
 				if (path) {
 					// Prevent a crash if path turns up nil.
-					contentURL = [NSURL fileURLWithPath:path];   
+					contentURL = [NSURL fileURLWithPath:path];
 				}
-			}
+			} while (false);
 		}
 	}
 	
@@ -137,7 +152,8 @@
 			// inspect local file
 			if ([contentURL isFileURL])
 			{
-				DTImage *image = [[DTImage alloc] initWithContentsOfFile:[contentURL path]];
+				NSString *imagePath = [contentURL path];
+				DTImage *image = [[DTImage alloc] initWithContentsOfFile:imagePath];
 				originalSize = image.size;
 				
 				if (!displaySize.width || !displaySize.height)
