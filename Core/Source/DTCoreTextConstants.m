@@ -11,6 +11,7 @@ NSString * const NSAttachmentAttributeName = @"NSAttachmentAttributeName";
 
 // custom options
 
+NSString * const DTRootPath = @"DTRootPath";
 NSString * const DTMaxImageSize = @"DTMaxImageSize";
 NSString * const DTMaxObjectSize = @"DTMaxObjectSize";
 NSString * const DTDefaultFontFamily = @"DTDefaultFontFamily";
